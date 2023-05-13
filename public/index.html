@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gitignore.sh</title>
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" /><link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" /><link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+    <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script defer data-domain="gitignore.sh" src="https://plausible.kaustubh.page/js/script.js"></script>
+
+    <style>
+      :root {
+        --global-font-size: 15px;
+        --global-line-height: 1.4em;
+        --global-space: 10px;
+        --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+          serif;
+        --mono-font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+          serif;
+        --background-color: #222225;
+        --page-width: 60em;
+        --font-color: #e8e9ed;
+        --invert-font-color: #222225;
+        --secondary-color: #a3abba;
+        --tertiary-color: #a3abba;
+        --primary-color: #62c4ff;
+        --error-color: #ff3c74;
+        --progress-bar-background: #3f3f44;
+        --progress-bar-fill: #62c4ff;
+        --code-bg-color: #3f3f44;
+        --input-style: solid;
+        --display-h1-decoration: none;
+      }
+    </style>
+  </head>
+  <body class="terminal">
+      <div class="container">
+          <div class="terminal-nav">
+              <header class="terminal-logo logo">
+                  $
+                  <a href="https://gitignore.sh">
+                      gitignore.sh
+                  </a>
+              </header>
+          </div>
+          <p>
+              The easiest way to download your gitignore files. Built by <a href="https://kaustubh.page" target="_blank">@n1kochiko</a>.
+          </p>
+      </div>
+      <hr />
+      <div class="container">
+          <p>
+              <h1>Examples</h1>
+              <pre><code class="language-shell">$ curl -o .gitignore gitignore.sh/python
+$ curl -JLO gitignore.sh/rust
+$ wget --content-disposition gitignore.sh/ocaml</code></pre>
+          </p>
+
+          <p id="supported-languages">
+          </p>
+      </div>
+      <hr />
+      <div class="container">
+          <footer style="text-align: center;">
+              <p>
+                  Sourced from <a href="https://github.com/github/gitignore">github/gitignore</a>. 
+                  Website styled with <a href="https://terminalcss.xyz">terminal.css</a>.
+              </p>
+              <p>
+                  Made with ❤️ by <a href="https://kaustubh.page">nikochiko</a>.
+              </p>
+          </footer>
+      </div>
+      <script>
+          fetch("https://gitignore.sh/langs.txt").then(response => {
+              response.text().then(text => {
+                  let element = document.getElementById("supported-languages");
+                  let languages = text.split(/\n/);
+                  element.innerHTML = `
+                      <h1>Supported languages</h1>
+                      <p class="text-muted">Use the lowercase version of these names as request path.</p>
+                  `;
+                  element.innerHTML += "<ul>"
+                  for (const lang of languages) {
+                      element.innerHTML += `<li>${lang}</li>`
+                  }
+                  element.innerHTML += "</ul>"
+              })
+          })
+      </script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+http://gitignore.sh, https://gitignore.sh {
+	file_server
+	header {
+		Content-Disposition "inline; filename=\".gitignore\""
+	}
+	root * /path/to/gitignore/public
+}
